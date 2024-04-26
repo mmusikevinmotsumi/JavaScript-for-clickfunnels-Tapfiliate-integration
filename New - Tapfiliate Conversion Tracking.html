@@ -1,0 +1,27 @@
+<script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+<script type="text/javascript">
+	var orderNumber = document.getElementsByClassName("elOrderConfirmationHeadTitle")[0].innerHTML.split('#');
+    orderNumber = orderNumber[1].split(' ');
+    orderNumber = orderNumber[0];
+
+	var orderTotal = document.getElementsByClassName("elOrderConfirmationTotal")[0].getElementsByTagName('span')[1].innerHTML.split(' ');
+	orderTotal = parseFloat(orderTotal[1]);
+
+	var tapfiliate_account_id = '40476-e04a1d';
+	var unique_conversion_id = orderNumber;
+	var conversion_amount = orderTotal;
+	var customer_id = orderNumber;
+
+    var metaData = {
+        email: localStorage.getItem("garlic::register.bwjagents.com*:email"),
+        first_name: localStorage.getItem("garlic::register.bwjagents.com*:first_name"),
+        last_name: localStorage.getItem("garlic::register.bwjagents.com*:last_name"),
+        phone: localStorage.getItem("garlic::register.bwjagents.com*:phone_number")
+    };
+ 
+	(function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+	tap('create', tapfiliate_account_id, { integration: "javascript" });
+	// tap('conversion', unique_conversion_id, conversion_amount, {meta_data: metaData}, {}, console.log('Success'));
+    tap('conversion', unique_conversion_id, conversion_amount, {meta_data: metaData}, {}, console.log(tapfiliate_account_id, unique_conversion_id, conversion_amount, metaData));
+</script>
